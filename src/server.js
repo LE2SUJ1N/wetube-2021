@@ -4,7 +4,7 @@ import globalRouter from "./routers/globalRouter";
 import videoRouter from "./routers/videoRouter";
 import userRouter from "./routers/userRouter";
 
-const PORT = 4002;
+const PORT = 4000;
 
 const app = express();
 const logger = morgan("dev"); //이거뭔데?
@@ -12,6 +12,7 @@ const logger = morgan("dev"); //이거뭔데?
 app.set("view engine", "pug");
 app.set("views", process.cwd() + "/src/views");
 app.use(logger);
+app.use(express.urlencoded({ extended: true }));
 app.use("/", globalRouter);
 app.use("/videos", videoRouter);
 app.use("/users", userRouter);
